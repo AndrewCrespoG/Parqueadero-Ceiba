@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import org.junit.Test;
 import ejemplo.ejemplo.Factura;
+import ejemplo.ejemplo.Tarifa;
 
 public class FacturaTest {
 
@@ -17,10 +18,11 @@ public class FacturaTest {
 		double valor = 5800.0;
 		Calendar ingresoVehiculo = null;
 		Calendar salidaVehiculo = Calendar.getInstance();
+		Tarifa tarifa = new Tarifa();
 
 		//Act
 		
-		Factura factura = new Factura (valor, placaVehiculo, ingresoVehiculo, salidaVehiculo);
+		Factura factura = new Factura (valor, placaVehiculo, ingresoVehiculo, salidaVehiculo, tarifa);
 		
 		//Assert
 		assertNotNull(factura);

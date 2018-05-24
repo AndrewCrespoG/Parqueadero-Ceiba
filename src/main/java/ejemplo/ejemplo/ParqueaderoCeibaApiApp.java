@@ -3,15 +3,15 @@ package ejemplo.ejemplo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication //Esta anotacion dice que es una app web
+@SpringBootApplication (scanBasePackages = {"ejemplo.controladores", "ejemplo.ejemplo"})
 public class ParqueaderoCeibaApiApp {
 
 	public static void main(String[] args) {
 		
 		SpringApplication.run(ParqueaderoCeibaApiApp.class, args); //Este metodo hace que comience
-		//la aplicacion. El primer metodo es la app 
+		//la aplicacion.
 		
-
+		
 	}
 
 }
