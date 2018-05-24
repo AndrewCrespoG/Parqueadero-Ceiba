@@ -1,5 +1,5 @@
 package ejemplo.controladores;
 
-public class TarifaController {
+public class VehiculoController {
 
 }
