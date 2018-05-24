@@ -4,55 +4,53 @@ import java.util.Calendar;
 
 public class Factura {
 	
-	private double Valor;
-	private String PlacaVehiculo;
-	private Calendar IngresoVehiculo;
-	private Calendar SalidaVehiculo;
+	private double valor;
+	private String placaVehiculo;
+	private Calendar ingresoVehiculo;
+	private Calendar salidaVehiculo;
 	
 	
 	public Factura() {//Constructor sin parámetros
 	}
-	
-	public Factura(double valor, String placaVehiculo, Calendar ingresoVehiculo, Calendar salidaVehiculo) { //Constructor con parámetros
-		super();
-		this.Valor = valor;
-		this.PlacaVehiculo = placaVehiculo;
-		this.IngresoVehiculo = ingresoVehiculo;
-		this.SalidaVehiculo = salidaVehiculo;
+
+	public Factura(double valor, String placaVehiculo, Calendar ingresoVehiculo, Calendar salidaVehiculo) {
+		this.valor = valor;
+		this.placaVehiculo = placaVehiculo;
+		this.ingresoVehiculo = ingresoVehiculo;
+		this.salidaVehiculo = salidaVehiculo;
 	}
 
 	public double getValor() {
-		return Valor;
+		return valor;
 	}
 
 	public void setValor(double valor) {
-		Valor = valor;
+		this.valor = valor;
 	}
 
 	public String getPlacaVehiculo() {
-		return PlacaVehiculo;
+		return placaVehiculo;
 	}
 
 	public void setPlacaVehiculo(String placaVehiculo) {
-		PlacaVehiculo = placaVehiculo;
+		this.placaVehiculo = placaVehiculo;
 	}
 
 	public Calendar getIngresoVehiculo() {
-		return IngresoVehiculo;
+		return ingresoVehiculo;
 	}
 
 	public void setIngresoVehiculo(Calendar ingresoVehiculo) {
-		IngresoVehiculo = ingresoVehiculo;
+		this.ingresoVehiculo = ingresoVehiculo;
 	}
 
 	public Calendar getSalidaVehiculo() {
-		return SalidaVehiculo;
+		return salidaVehiculo;
 	}
 
 	public void setSalidaVehiculo(Calendar salidaVehiculo) {
-		SalidaVehiculo = salidaVehiculo;
+		this.salidaVehiculo = salidaVehiculo;
 	}
-	
 	
 	
 	
