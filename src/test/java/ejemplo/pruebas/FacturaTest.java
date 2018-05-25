@@ -1,7 +1,6 @@
 package ejemplo.pruebas;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.Calendar;
 
@@ -18,7 +17,6 @@ public class FacturaTest {
 		//Arrange
 		
 		String placaVehiculo = "";
-		double valor = 0.0;
 		Calendar ingresoVehiculo = null;
 		Calendar salidaVehiculo = null;
 		Vehiculo vehiculo = null;
@@ -43,6 +41,7 @@ public class FacturaTest {
 		
 		Factura factura = new Factura(null, null, ayer, hoy, null);
 		int esperado = 36;
+
 		//Act
 		int diferencia = factura.calcularNumeroDeHoras(ayer, hoy);
 		//Assert
@@ -53,7 +52,6 @@ public class FacturaTest {
 	@Test
 	public void calcularValorFacturaTest() {
 		//Arrange
-
 		
 		String placaVehiculo = "ABC-123";
 		String propietario = "Andrew Crespo";
@@ -64,6 +62,7 @@ public class FacturaTest {
 		
 		Calendar ingresoVehiculo = Calendar.getInstance();
 		ingresoVehiculo.add(Calendar.DAY_OF_MONTH, -1);
+		ingresoVehiculo.add(Calendar.HOUR, -1);
 		
 		Calendar salidaVehiculo = Calendar.getInstance();
 		Tarifa tarifa = new Tarifa(0);

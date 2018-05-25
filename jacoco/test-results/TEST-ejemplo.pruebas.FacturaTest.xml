@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ejemplo.pruebas.FacturaTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-05-25T13:19:04" hostname="ANDRES-CRESPO" time="0.032">
+  <properties/>
+  <testcase name="crearFacturaTest" classname="ejemplo.pruebas.FacturaTest" time="0.006"/>
+  <testcase name="calcularValorFacturaTest" classname="ejemplo.pruebas.FacturaTest" time="0.025"/>
+  <testcase name="calcularNumeroDeHorasTest" classname="ejemplo.pruebas.FacturaTest" time="0.001"/>
+  <system-out><![CDATA[25
+Entra numeroDeHoras >= 9 && numeroDeHoras >= 24
+Entra numeroDeHoras < 9
+Valor dias para facturar 8000.0
+Valor horas por facturar 1000.0
+Valor adicional por cilindraje 0.0
+Total: 9000.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

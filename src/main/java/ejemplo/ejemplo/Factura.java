@@ -17,7 +17,7 @@ public class Factura {
 	public double calcularValorFactura() {
 		
 		int numeroDeHoras = calcularNumeroDeHoras(this.getIngresoVehiculo(), this.getSalidaVehiculo());
-		
+		System.out.println(numeroDeHoras);
 		int diasParaFacturar = 0;
 		int horasParaFacturar = 0;
 		double valorDiaParaFacturar = 0;
@@ -44,6 +44,7 @@ public class Factura {
 		System.out.println("Valor dias para facturar " + valorDiaParaFacturar);
 		valorHoraParaFacturar = (this.getTarifa().getValorHora() * horasParaFacturar);
 		System.out.println("Valor horas por facturar " + valorHoraParaFacturar);
+		
 		System.out.println("Valor adicional por cilindraje " + this.getTarifa().getValorAdicionalMotoCilindraje());
 		
 		System.out.println("Total: " + (valorDiaParaFacturar + valorHoraParaFacturar + this.getTarifa().getValorAdicionalMotoCilindraje()));

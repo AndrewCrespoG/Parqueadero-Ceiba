@@ -8,6 +8,7 @@ public class Tarifa {
 	private static final double VALOR_DIA_MOTO = 4000;
 	private static final double VALOR_HORA_MOTO = 500;
 	private static final double VALOR_ADICIONAL_MOTO_POR_CILINDRAJE = 2000;
+	private static final double SIN_VALOR_ADICIONAL = 0;
 	private static final int ES_MOTOCICLETA = 1;
 	private static final int ES_AUTOMOVIL = 0;
 	
@@ -27,7 +28,11 @@ public class Tarifa {
 		
 		this.valorDia = calcularValorDia(tipoVehiculo);
 		this.valorHora = calcularValorHora(tipoVehiculo);
-		this.valorAdicionalMotoCilindraje = VALOR_ADICIONAL_MOTO_POR_CILINDRAJE;
+		if(tipoVehiculo == ES_MOTOCICLETA && this.cilindraje >= 350) {
+			this.valorAdicionalMotoCilindraje = VALOR_ADICIONAL_MOTO_POR_CILINDRAJE;
+		} else {
+			this.valorAdicionalMotoCilindraje = SIN_VALOR_ADICIONAL;
+		}
 		
 	}
 	
@@ -49,8 +54,6 @@ public class Tarifa {
 		return valorHora;
 	}
 	
-
-
 	public double getValorHora() {
 		return valorHora;
 	}
