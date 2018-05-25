@@ -16,7 +16,7 @@ public class FacturaTest {
 		int cilindraje = 650;
 		String placa = "ABC-123";
 		String propietario = "Andrew Crespo";
-		int tipoVehiculo = 1;
+		int tipoVehiculo = 0;
 		
 		Vehiculo vehiculo = new Vehiculo(cilindraje, placa, propietario, tipoVehiculo);
 		
@@ -26,14 +26,15 @@ public class FacturaTest {
 		Calendar fechaIngreso = Calendar.getInstance();
 		//fechaIngreso.add(Calendar.DATE, -1);//Ayer
 		Calendar fechaSalida = Calendar.getInstance();
-		fechaSalida.add(Calendar.HOUR, 10);//Se cobra un dia
+		fechaSalida.add(Calendar.HOUR, 3);//Se cobra un dia
+		fechaSalida.add(Calendar.DATE, 1);//Se cobra un dia
 		
-		double esperado = 6000.0;
+		double esperado = 11000;
 		
 		Factura factura = new Factura(vehiculo, fechaIngreso, fechaSalida, tarifa);
 		//Act
 		double actual = factura.calcularValorFactura();
-		
+		System.out.println(actual);
 		//Assert
 		Assert.assertEquals(esperado, actual, 0);
 	}
