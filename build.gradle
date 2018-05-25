@@ -42,8 +42,7 @@ jacocoTestReport.dependsOn(test)
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
-	//compile ('org.gradle:gradle-tooling-api:3.0')
-	//compile("org.springframework.boot:spring-boot-starter-web:2.0.2.RELEASE")
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile('org.gradle:gradle-tooling-api:3.0')
+	compile('org.springframework.boot:spring-boot-starter-test')
 	compile('org.springframework.boot:spring-boot-starter-web')
 }

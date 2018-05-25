@@ -1,7 +1,5 @@
 package ejemplo.pruebas;
 
-import static org.junit.Assert.*;
-
 import java.util.Calendar;
 
 import org.junit.Assert;
@@ -10,12 +8,12 @@ import ejemplo.ejemplo.*;
 
 public class FacturaTest {
 	
-	/*@Test
+	@Test
 	public void calcularValorFacturaTest() {
 		//Assert
-		//Propiedades de vehiculo (automovil)
+		//Propiedades de vehiculo 
 		
-		int cilindraje = 600;
+		int cilindraje = 100;
 		String placa = "ABC-123";
 		String propietario = "Andrew Crespo";
 		int tipoVehiculo = 0;
@@ -25,11 +23,16 @@ public class FacturaTest {
 		Tarifa tarifa = new Tarifa (vehiculo);
 		
 		//La factura
-		Calendar fechaIngreso; //Ayer
-		Calendar fechaSalida; // Hoy (25 hrs)
+		Calendar fechaIngreso = Calendar.getInstance();
+		//fechaIngreso.add(Calendar.DATE, -1);//Ayer
+		Calendar fechaSalida = Calendar.getInstance();
+		fechaSalida.add(Calendar.HOUR, 11);
+		fechaSalida.add(Calendar.DATE, 1);
 		
-		Factura factura = new Factura(vehiculo, null, null, tarifa);
-	}*/
+		Factura factura = new Factura(vehiculo, fechaIngreso, fechaSalida, tarifa);
+		
+		System.out.println(factura.calcularValorFactura());
+	}
 	
 	@Test
 	public void calcularNumeroDeHorasEntreDosFechasTest(){

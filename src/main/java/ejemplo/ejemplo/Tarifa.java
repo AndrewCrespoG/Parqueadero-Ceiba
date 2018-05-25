@@ -34,7 +34,7 @@ public class Tarifa {
 	
 	private double calcularValorAdicionalPorCilindraje(Vehiculo vehiculo) {
 		return ((vehiculo.getTipoVehiculo() == ES_MOTO) &&
-				(vehiculo.getCilindraje() > CILINDRAJE_MINIMO_PAGO_ADICIONAL)) ?
+				(vehiculo.getCilindraje() >= CILINDRAJE_MINIMO_PAGO_ADICIONAL)) ?
 						VALOR_ADICIONAL_MOTO_POR_CILINDRAJE : SIN_VALOR_ADICIONAL;
 	}
 	
