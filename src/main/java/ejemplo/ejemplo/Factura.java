@@ -18,8 +18,24 @@ public class Factura {
 	public double calcularValorFactura() {
 		int horasPorCalcular = calcularNumeroDeHorasEntreDosFechas(this.ingresoVehiculo, this.salidaVehiculo);
 		
-		int diasPorFacturar = calcularDiasDesde(horasPorCalcular);
-		int horasPorFacturar = calcularHorasSobrantesDesde(horasPorCalcular);
+		int diasPorFacturar = 0;
+		int horasPorFacturar = 0;
+		
+		while(horasPorCalcular > 0) {
+			if (horasPorCalcular >= 9 && horasPorCalcular > 24) {
+				//Resta 24 hrs a la pila y suma un dia
+				horasPorCalcular = horasPorCalcular - 24;
+				diasPorFacturar = diasPorFacturar + 1;
+			} else if(horasPorCalcular >= 9 && horasPorCalcular <= 24) {
+				//Hace que la pila de horas sea cero y agrega un dia
+				horasPorCalcular = 0;
+				diasPorFacturar = diasPorFacturar + 1;
+			} else if (horasPorCalcular < 9) {
+				//Sumar las horas restantes de la pila a las horas por facturar
+				horasPorFacturar = horasPorCalcular;
+				horasPorCalcular = 0;
+			}
+		}
 		
 		double total;
 		total = (diasPorFacturar * this.tarifa.getValorPorDia()) +
@@ -29,25 +45,9 @@ public class Factura {
 		return total;
 	}
 	
-	public int calcularHorasSobrantesDesde(int horas) { // Calcula las horas sobrantes
-		while (horas >= 24) {
-			horas -= 24;
-		}
-		return horas;
-	}
-	
-	public int calcularDiasDesde(int horas) { // Calcular dias
-		if (horas >= 9 && horas > 24) {
-			return (horas / 24);
-		}else if(horas >= 9 && horas <= 24) {
-			return 1;
-		}
-		return 0;
-	}
-	
 	public int calcularNumeroDeHorasEntreDosFechas(Calendar antes, Calendar despues) {
-		int horas = (int) ((despues.getTimeInMillis() - antes.getTimeInMillis())/1000/60/60);
-		return (horas < 1) ? (1) : (horas);
+		int horasCalc = (int) ((despues.getTimeInMillis() - antes.getTimeInMillis())/1000/60/60);
+		return (horasCalc < 1) ? (1) : (horasCalc);
 	}
 
 	public Factura(Vehiculo vehiculo, Calendar ingresoVehiculo, Calendar salidaVehiculo, Tarifa tarifa) {

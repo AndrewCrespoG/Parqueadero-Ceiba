@@ -1,7 +1,5 @@
 package ejemplo.ejemplo;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
-
 public class Tarifa {
 	
 	//Tabla de tarifas
@@ -32,17 +30,17 @@ public class Tarifa {
 		valorAdicionalAMotoPorCilindraje = calcularValorAdicionalPorCilindraje(vehiculo);
 	}
 	
-	private double calcularValorAdicionalPorCilindraje(Vehiculo vehiculo) {
+	public double calcularValorAdicionalPorCilindraje(Vehiculo vehiculo) {
 		return ((vehiculo.getTipoVehiculo() == ES_MOTO) &&
 				(vehiculo.getCilindraje() >= CILINDRAJE_MINIMO_PAGO_ADICIONAL)) ?
 						VALOR_ADICIONAL_MOTO_POR_CILINDRAJE : SIN_VALOR_ADICIONAL;
 	}
 	
-	private double calcularValorPorDia(Vehiculo vehiculo) {
+	public double calcularValorPorDia(Vehiculo vehiculo) {
 		return (vehiculo.getTipoVehiculo() == ES_AUTOMOVIL) ? VALOR_DIA_AUTOMOVIL: VALOR_DIA_MOTO;
 	}
 	
-	private double calcularValorPorHora(Vehiculo vehiculo) {
+	public double calcularValorPorHora(Vehiculo vehiculo) {
 		return (vehiculo.getTipoVehiculo() == ES_AUTOMOVIL) ? VALOR_HORA_AUTOMOVIL : VALOR_HORA_MOTO ;
 	}
 
