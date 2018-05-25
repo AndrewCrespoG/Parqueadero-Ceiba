@@ -6,76 +6,72 @@ import java.util.Calendar;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ejemplo.ejemplo.Factura;
-import ejemplo.ejemplo.Tarifa;
-import ejemplo.ejemplo.Vehiculo;
+import ejemplo.ejemplo.*;
 
 public class FacturaTest {
-
-	@Test
-	public void crearFacturaTest(){
-		//Arrange
-		
-		String placaVehiculo = "";
-		Calendar ingresoVehiculo = null;
-		Calendar salidaVehiculo = null;
-		Vehiculo vehiculo = null;
-		Tarifa tarifa = new Tarifa();
-
-		//Act
-		
-		Factura factura = new Factura (placaVehiculo, vehiculo, ingresoVehiculo, salidaVehiculo, tarifa);
-		
+	
+	/*@Test
+	public void calcularValorFacturaTest() {
 		//Assert
-		assertNotNull(factura);
-	} 
-
+		//Propiedades de vehiculo (automovil)
+		
+		int cilindraje = 600;
+		String placa = "ABC-123";
+		String propietario = "Andrew Crespo";
+		int tipoVehiculo = 0;
+		
+		Vehiculo vehiculo = new Vehiculo(cilindraje, placa, propietario, tipoVehiculo);
+		
+		Tarifa tarifa = new Tarifa (vehiculo);
+		
+		//La factura
+		Calendar fechaIngreso; //Ayer
+		Calendar fechaSalida; // Hoy (25 hrs)
+		
+		Factura factura = new Factura(vehiculo, null, null, tarifa);
+	}*/
 	
 	@Test
-	public void calcularNumeroDeHorasTest() {
-		//Arrange
-		Calendar hoy = Calendar.getInstance();
-		hoy.set(2018, 00, 22, 12, 00, 00);
-		Calendar ayer = Calendar.getInstance();
-		ayer.set(2018, 00, 21, 00, 00, 00);
-		
-		Factura factura = new Factura(null, null, ayer, hoy, null);
-		int esperado = 36;
-
-		//Act
-		int diferencia = factura.calcularNumeroDeHoras(ayer, hoy);
+	public void calcularNumeroDeHorasEntreDosFechasTest(){
 		//Assert
-		Assert.assertEquals(esperado, diferencia);
+		Calendar hoy = Calendar.getInstance();
+		Calendar manana = Calendar.getInstance();
+		manana.add(Calendar.DAY_OF_MONTH, 2);
+		Factura factura = new Factura(null, hoy, manana, null);
+		int esperado = 48;
 		
+		//Act
+		int actual = factura.calcularNumeroDeHorasEntreDosFechas(hoy, manana);
+		
+		//Assert
+		Assert.assertEquals(esperado, actual);
+	}
+
+	@Test
+	public void calcularDiasDesdeTest() {
+		//Arrange
+		int horas = 25;
+		int esperado = 1;
+		Factura factura = new Factura();
+		
+		//Act
+		int actual = factura.calcularDiasDesde(horas);
+		
+		//Assert
+		Assert.assertEquals(esperado, actual);
 	}
 	
 	@Test
-	public void calcularValorFacturaTest() {
+	public void calcularHorasSobrantesDesdeTest() {
 		//Arrange
-		
-		String placaVehiculo = "ABC-123";
-		String propietario = "Andrew Crespo";
-		int tipoVehiculo = 0;
-		int cilindraje = 350;
-		
-		Vehiculo vehiculo = new Vehiculo (cilindraje, placaVehiculo, propietario, tipoVehiculo);
-		
-		Calendar ingresoVehiculo = Calendar.getInstance();
-		ingresoVehiculo.add(Calendar.DAY_OF_MONTH, -1);
-		ingresoVehiculo.add(Calendar.HOUR, -1);
-		
-		Calendar salidaVehiculo = Calendar.getInstance();
-		Tarifa tarifa = new Tarifa(0);
-		
-		Factura factura = new Factura(placaVehiculo, vehiculo, ingresoVehiculo, salidaVehiculo, tarifa);
+		Factura factura = new Factura ();
+		int horas = 49;
+		int esperado = 1;
 		
 		//Act
-		factura.calcularValorFactura();
+		int actual = factura.calcularHorasSobrantesDesde(horas);
 		
 		//Assert
-		
-		
-
-		
+		Assert.assertEquals(esperado, actual);
 	}
 }

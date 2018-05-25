@@ -13,9 +13,9 @@ public class FacturaController {
 	@RequestMapping("/mostrarFactura")
 	public Factura getFactura(){
 		//Creando la factura
-		int tipoDeVehiculo = 0;
+		/*int tipoDeVehiculo = 0;
 		
-		Tarifa tarifa = new Tarifa(tipoDeVehiculo);
+		Tarifa tarifa = new Tarifa(vehiculo);
 		
 		Calendar entradaVehiculo = Calendar.getInstance();
 		entradaVehiculo.set(2018, 00, 21, 05, 00); //Entra el 21 de Enero del 2018
@@ -26,7 +26,8 @@ public class FacturaController {
 		
 		Factura factura = new Factura ("ABC-123", null , entradaVehiculo, salidaVehiculo, tarifa);
 		
-		return factura;
+		return factura;*/
+		return null;
 	}
 	
 }

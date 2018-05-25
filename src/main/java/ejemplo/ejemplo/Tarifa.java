@@ -1,5 +1,7 @@
 package ejemplo.ejemplo;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+
 public class Tarifa {
 	
 	//Tabla de tarifas
@@ -8,91 +10,64 @@ public class Tarifa {
 	private static final double VALOR_DIA_MOTO = 4000;
 	private static final double VALOR_HORA_MOTO = 500;
 	private static final double VALOR_ADICIONAL_MOTO_POR_CILINDRAJE = 2000;
+	private static final int CILINDRAJE_MINIMO_PAGO_ADICIONAL = 500;
 	private static final double SIN_VALOR_ADICIONAL = 0;
-	private static final int ES_MOTOCICLETA = 1;
+	private static final int ES_MOTO = 1;
 	private static final int ES_AUTOMOVIL = 0;
 	
 	//Fin tabla tarifas
 	
-	private double valorHora;
-	private double valorDia; 
-	private int tipoVehiculo;
-	private int cilindraje;
-	private double valorAdicionalMotoCilindraje;
+	private double valorPorHora;
+	private double valorPorDia;
+	private double valorAdicionalAMotoPorCilindraje;
 	
-	public Tarifa() {
+	public Tarifa () {
 		
 	}
 	
-	public Tarifa(int tipoVehiculo) {
-		
-		this.valorDia = calcularValorDia(tipoVehiculo);
-		this.valorHora = calcularValorHora(tipoVehiculo);
-		if(tipoVehiculo == ES_MOTOCICLETA && this.cilindraje >= 350) {
-			this.valorAdicionalMotoCilindraje = VALOR_ADICIONAL_MOTO_POR_CILINDRAJE;
-		} else {
-			this.valorAdicionalMotoCilindraje = SIN_VALOR_ADICIONAL;
-		}
-		
+	public Tarifa(Vehiculo vehiculo) {
+		//Calcular valor por hora
+		valorPorHora = calcularValorPorHora(vehiculo);
+		valorPorDia = calcularValorPorDia(vehiculo);
+		valorAdicionalAMotoPorCilindraje = calcularValorAdicionalPorCilindraje(vehiculo);
 	}
 	
-	private double calcularValorDia(int tipoVehiculo){
-		if (tipoVehiculo == ES_AUTOMOVIL) {
-			valorDia = VALOR_DIA_AUTOMOVIL;
-		} else if (tipoVehiculo == ES_MOTOCICLETA) { //Es Motocicleta
-			this.valorDia = VALOR_DIA_MOTO;
-		}
-		return valorDia;
+	private double calcularValorAdicionalPorCilindraje(Vehiculo vehiculo) {
+		return ((vehiculo.getTipoVehiculo() == ES_MOTO) &&
+				(vehiculo.getCilindraje() > CILINDRAJE_MINIMO_PAGO_ADICIONAL)) ?
+						VALOR_ADICIONAL_MOTO_POR_CILINDRAJE : SIN_VALOR_ADICIONAL;
 	}
 	
-	private double calcularValorHora(int tipoVehiculo){
-		if (tipoVehiculo == 0) {//Es Automovil
-			valorHora = VALOR_HORA_AUTOMOVIL;
-		} else if (tipoVehiculo == 1) { //Es Motocicleta
-			this.valorHora = VALOR_DIA_MOTO;
-		}
-		return valorHora;
+	private double calcularValorPorDia(Vehiculo vehiculo) {
+		return (vehiculo.getTipoVehiculo() == ES_AUTOMOVIL) ? VALOR_DIA_AUTOMOVIL: VALOR_DIA_MOTO;
 	}
 	
-	public double getValorHora() {
-		return valorHora;
+	private double calcularValorPorHora(Vehiculo vehiculo) {
+		return (vehiculo.getTipoVehiculo() == ES_AUTOMOVIL) ? VALOR_HORA_AUTOMOVIL : VALOR_HORA_MOTO ;
 	}
 
-	public void setValorHora(double valorHora) {
-		this.valorHora = valorHora;
+	public double getValorPorHora() {
+		return valorPorHora;
 	}
 
-	public double getValorDia() {
-		return valorDia;
+	public void setValorPorHora(double valorPorHora) {
+		this.valorPorHora = valorPorHora;
 	}
 
-	public void setValorDia(double valorDia) {
-		this.valorDia = valorDia;
+	public double getValorPorDia() {
+		return valorPorDia;
 	}
 
-	public int getTipoVehiculo() {
-		return tipoVehiculo;
+	public void setValorPorDia(double valorPorDia) {
+		this.valorPorDia = valorPorDia;
 	}
 
-	public void setTipoVehiculo(int tipoVehiculo) {
-		this.tipoVehiculo = tipoVehiculo;
+	public double getValorAdicionalAMotoPorCilindraje() {
+		return valorAdicionalAMotoPorCilindraje;
 	}
 
-	public int getCilindraje() {
-		return cilindraje;
+	public void setValorAdicionalAMotoPorCilindraje(double valorAdicionalAMotoPorCilindraje) {
+		this.valorAdicionalAMotoPorCilindraje = valorAdicionalAMotoPorCilindraje;
 	}
-
-	public void setCilindraje(int cilindraje) {
-		this.cilindraje = cilindraje;
-	}
-
-	public double getValorAdicionalMotoCilindraje() {
-		return valorAdicionalMotoCilindraje;
-	}
-
-	public void setValorAdicionalMotoCilindraje(double valorAdicionalMotoCilindraje) {
-		this.valorAdicionalMotoCilindraje = valorAdicionalMotoCilindraje;
-	}
-	
 	
 }

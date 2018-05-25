@@ -1,11 +1,12 @@
 package ejemplo.ejemplo;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+
 import java.util.Calendar;
 
 public class Factura {
 	
-	private double valor;
-	private String placaVehiculo;
+	private double valorFactura;
 	private Calendar ingresoVehiculo;
 	private Calendar salidaVehiculo;
 	private Tarifa tarifa;
@@ -15,69 +16,45 @@ public class Factura {
 	}
 	
 	public double calcularValorFactura() {
+		int horasPorCalcular = calcularNumeroDeHorasEntreDosFechas(this.ingresoVehiculo, this.salidaVehiculo);
 		
-		int numeroDeHoras = calcularNumeroDeHoras(this.getIngresoVehiculo(), this.getSalidaVehiculo());
-		System.out.println(numeroDeHoras);
-		int diasParaFacturar = 0;
-		int horasParaFacturar = 0;
-		double valorDiaParaFacturar = 0;
-		double valorHoraParaFacturar = 0;
+		int diasPorFacturar = calcularDiasDesde(horasPorCalcular);
+		int horasPorFacturar = calcularHorasSobrantesDesde(horasPorCalcular);
 		
-		while(numeroDeHoras > 0) {
-			if (numeroDeHoras >= 9 && numeroDeHoras >= 24) {
-				System.out.println("Entra numeroDeHoras >= 9 && numeroDeHoras >= 24");
-				diasParaFacturar ++;
-				numeroDeHoras -= 24;
-			}else if(numeroDeHoras >= 9 && numeroDeHoras < 24) {
-				System.out.println("Entra numeroDeHoras >= 9 && numeroDeHoras < 24");
-				diasParaFacturar ++;
-				numeroDeHoras = 0;
-			}else if(numeroDeHoras < 9) {
-				System.out.println("Entra numeroDeHoras < 9");
-				horasParaFacturar = numeroDeHoras;
-				numeroDeHoras = 0;
-			}
-			
-		}
+		double total;
+		total = (diasPorFacturar * this.tarifa.getValorPorDia()) +
+				(horasPorFacturar * this.tarifa.getValorPorHora()) +
+				this.tarifa.getValorAdicionalAMotoPorCilindraje();
 		
-		valorDiaParaFacturar = (this.getTarifa().getValorDia() * diasParaFacturar);
-		System.out.println("Valor dias para facturar " + valorDiaParaFacturar);
-		valorHoraParaFacturar = (this.getTarifa().getValorHora() * horasParaFacturar);
-		System.out.println("Valor horas por facturar " + valorHoraParaFacturar);
-		
-		System.out.println("Valor adicional por cilindraje " + this.getTarifa().getValorAdicionalMotoCilindraje());
-		
-		System.out.println("Total: " + (valorDiaParaFacturar + valorHoraParaFacturar + this.getTarifa().getValorAdicionalMotoCilindraje()));
-		
-		return (valorDiaParaFacturar + valorHoraParaFacturar + this.getTarifa().getValorAdicionalMotoCilindraje());
+		return total;
 	}
 	
-	public int calcularNumeroDeHoras(Calendar entradaVehiculo, Calendar salidaVehiculo) {
-		return (int) ((salidaVehiculo.getTimeInMillis() - entradaVehiculo.getTimeInMillis())/1000/60/60);
+	public int calcularHorasSobrantesDesde(int horas) { // Calcula las horas sobrantes
+		while (horas >= 24) {
+			horas -= 24;
+		}
+		return horas;
+	}
+	
+	public int calcularDiasDesde(int horas) { // Calcular dias
+		if (horas >= 9 && horas > 24) {
+			return (horas / 24);
+		}else if(horas >= 9 && horas <= 24) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	public int calcularNumeroDeHorasEntreDosFechas(Calendar antes, Calendar despues) {
+		int horas = (int) ((despues.getTimeInMillis() - antes.getTimeInMillis())/1000/60/60);
+		return (horas < 1) ? (1) : (horas);
 	}
 
-	public Factura(String placaVehiculo, Vehiculo vehiculo, Calendar ingresoVehiculo, Calendar salidaVehiculo, Tarifa tarifa) {
-		this.placaVehiculo = placaVehiculo;
+	public Factura(Vehiculo vehiculo, Calendar ingresoVehiculo, Calendar salidaVehiculo, Tarifa tarifa) {
 		this.vehiculo = vehiculo;
 		this.ingresoVehiculo = ingresoVehiculo;
 		this.salidaVehiculo = salidaVehiculo;
 		this.tarifa = tarifa;	
-	}
-
-	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-
-	public String getPlacaVehiculo() {
-		return placaVehiculo;
-	}
-
-	public void setPlacaVehiculo(String placaVehiculo) {
-		this.placaVehiculo = placaVehiculo;
 	}
 
 	public Calendar getIngresoVehiculo() {
@@ -96,20 +73,5 @@ public class Factura {
 		this.salidaVehiculo = salidaVehiculo;
 	}
 	
-	public Tarifa getTarifa() {
-		return tarifa;
-	}
-	
-	public void setTarifa(Tarifa tarifa) {
-		this.tarifa = tarifa;
-	}
-
-	public Vehiculo getVehiculo() {
-		return vehiculo;
-	}
-
-	public void setVehiculo(Vehiculo vehiculo) {
-		this.vehiculo = vehiculo;
-	}
 	
 }
