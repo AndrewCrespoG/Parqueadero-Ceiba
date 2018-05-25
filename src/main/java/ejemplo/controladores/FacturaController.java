@@ -10,9 +10,9 @@ import java.util.Calendar;
 @RestController
 public class FacturaController {
 	
-	@RequestMapping("/mostrarFactura")
+	@RequestMapping("/factura")
 	public Factura getFactura(){
-		//Creando y mostrando una Factura en "MostrarFactura"
+		//Creando y mostrando una Factura en "/mostrarFactura"
 		
 		return null;
 	}

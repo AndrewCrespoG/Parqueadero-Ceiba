@@ -42,6 +42,8 @@ public class Factura {
 				(horasPorFacturar * this.tarifa.getValorPorHora()) +
 				this.tarifa.getValorAdicionalAMotoPorCilindraje();
 		
+		this.valorFactura = total;
+		
 		return total;
 	}
 	
