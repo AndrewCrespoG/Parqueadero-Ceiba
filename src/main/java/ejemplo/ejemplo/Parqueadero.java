@@ -1,6 +1,14 @@
 package ejemplo.ejemplo;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import DAO.Conexion;
+import Interfaces.DAOParqueadero;
+import tablas.ParqueosTabla;
 
 public class Parqueadero {
 	
@@ -49,7 +57,7 @@ public class Parqueadero {
 	
 	public void ingresarVehiculoAlParqueadero(Vehiculo vehiculo, Calendar fechaIngreso) {
 		//Consulta si se puede hacer la insercion (si el parqueadero no esta lleno)
-		//Ejecuta la inserción en la base de datos
+		//Ejecuta la insercion en la base de datos
 	}
 	
 	public String primeraLetraDeCadena(String cadena) {
@@ -71,5 +79,5 @@ public class Parqueadero {
 	public void setFactura(Factura factura) {
 		this.factura = factura;
 	}
-	
+
 }
