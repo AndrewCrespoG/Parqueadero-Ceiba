@@ -22,7 +22,7 @@ public class ParqueaderoTest {
 		Assert.assertEquals(esperado, actual);
 	}
 	
-	/*@Test
+	@Test
 	public void intentarIngresarVehiculoAlParqueaderoTest(){
 		Parqueadero parqueadero = new Parqueadero();
 		
@@ -34,5 +34,5 @@ public class ParqueaderoTest {
 		
 		parqueadero.intentarIngresarVehiculoAlParqueadero(vehiculo, fechaIngreso);
 		
-	}*/
+	}
 }
