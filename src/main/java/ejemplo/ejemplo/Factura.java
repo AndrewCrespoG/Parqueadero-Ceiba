@@ -1,10 +1,6 @@
 package ejemplo.ejemplo;
 
-<<<<<<< HEAD
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
-=======
->>>>>>> 9f31ae170384c4d56fb6d9a8eb7261575b4a70f5
 import java.util.Calendar;
 
 public class Factura {

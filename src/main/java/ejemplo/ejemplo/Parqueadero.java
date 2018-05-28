@@ -1,21 +1,19 @@
 package ejemplo.ejemplo;
 
-<<<<<<< HEAD
-=======
+
 import java.util.Calendar;
 
->>>>>>> 9f31ae170384c4d56fb6d9a8eb7261575b4a70f5
+
 public class Parqueadero {
 	
 	private String nombreParqueadero;
 	private Factura factura;
 	
-<<<<<<< HEAD
-=======
+
 	private static final boolean MENSAJE_INGRESO_INVALIDO = false;
 	private static final boolean MENSAJE_INGRESO_EXITOSO = true;
 	
->>>>>>> 9f31ae170384c4d56fb6d9a8eb7261575b4a70f5
+
 	public Parqueadero(String nombreParqueadero) {
 		this.nombreParqueadero = nombreParqueadero;
 	}
@@ -23,8 +21,7 @@ public class Parqueadero {
 	public Parqueadero() {
 	}
 
-<<<<<<< HEAD
-=======
+
 	public boolean intentarIngresarVehiculoAlParqueadero(Vehiculo vehiculo, Calendar fechaIngreso) {
 		//Si la placa comienza por A
 		
@@ -57,7 +54,7 @@ public class Parqueadero {
 		return Character.toString(cadena.charAt(0));
 	}
 	
->>>>>>> 9f31ae170384c4d56fb6d9a8eb7261575b4a70f5
+
 	public String getNombreParqueadero() {
 		return nombreParqueadero;
 	}
@@ -74,8 +71,4 @@ public class Parqueadero {
 		this.factura = factura;
 	}
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> 9f31ae170384c4d56fb6d9a8eb7261575b4a70f5
 }
