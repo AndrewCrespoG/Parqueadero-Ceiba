@@ -29,7 +29,10 @@ public class ParqueaderoTest {
 		Vehiculo vehiculo = new Vehiculo();
 		vehiculo.setPlaca("ABC-123");
 		
-		parqueadero.intentarIngresarVehiculoAlParqueadero(vehiculo, null);
+		Calendar fechaIngreso = Calendar.getInstance();
+		fechaIngreso.set(2018, 04, 27);
+		
+		parqueadero.intentarIngresarVehiculoAlParqueadero(vehiculo, fechaIngreso);
 		
 	}
 }
