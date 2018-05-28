@@ -1,14 +1,6 @@
 package ejemplo.ejemplo;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-import DAO.Conexion;
-import Interfaces.DAOParqueadero;
-import tablas.ParqueosTabla;
 
 public class Parqueadero {
 	
