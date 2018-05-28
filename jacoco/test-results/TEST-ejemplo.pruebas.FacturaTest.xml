@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<testsuite name="ejemplo.pruebas.FacturaTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-05-25T21:16:56" hostname="ANDRES-CRESPO" time="0.02">
-  <properties/>
-  <testcase name="calcularValorFacturaTest" classname="ejemplo.pruebas.FacturaTest" time="0.02"/>
-  <testcase name="calcularNumeroDeHorasEntreDosFechasTest" classname="ejemplo.pruebas.FacturaTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-=======
 <testsuite name="ejemplo.pruebas.FacturaTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-05-28T00:10:42" hostname="Andre" time="0.135">
   <properties/>
   <testcase name="calcularValorFacturaTest" classname="ejemplo.pruebas.FacturaTest" time="0.135"/>
   <testcase name="calcularNumeroDeHorasEntreDosFechasTest" classname="ejemplo.pruebas.FacturaTest" time="0.0"/>
   <system-out><![CDATA[11000.0
 ]]></system-out>
->>>>>>> 9f31ae170384c4d56fb6d9a8eb7261575b4a70f5
   <system-err><![CDATA[]]></system-err>
 </testsuite>

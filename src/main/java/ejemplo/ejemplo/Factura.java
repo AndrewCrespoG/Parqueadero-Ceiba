@@ -1,6 +1,5 @@
 package ejemplo.ejemplo;
 
-
 import java.util.Calendar;
 
 public class Factura {
